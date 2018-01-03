@@ -97,7 +97,7 @@ public class HttpUtil {
                     JSONObject cityObject=allCountys.getJSONObject(i);
                     County county=new County();
                     county.setCountyName(cityObject.getString("name"));
-                    county.setWeatherId(cityObject.getInt("weather_id"));
+                    county.setWeatherId(cityObject.getString("weather_id"));
                     county.setCityId(cityId);
                     county.save();
                 }
