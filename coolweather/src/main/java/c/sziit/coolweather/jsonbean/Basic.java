@@ -16,7 +16,7 @@ public class Basic {
     private String id;
     private String lat;
     private String lon;
-    private Update update;
+    /*private Update update;*/
     public void setCity(String city) {
          this.city = city;
      }
@@ -52,11 +52,11 @@ public class Basic {
          return lon;
      }
 
-    public void setUpdate(Update update) {
+    /*public void setUpdate(Update update) {
          this.update = update;
      }
      public Update getUpdate() {
          return update;
-     }
+     }*/
 
 }

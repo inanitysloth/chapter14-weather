@@ -15,7 +15,8 @@ public class HeWeather {
     private Aqi aqi;
     private Basic basic;
     private List<Daily_forecast> daily_forecast;
-    private List<Hourly_forecast> hourly_forecast;
+
+    /*private List<Hourly_forecast> hourly_forecast;*/
     private Now now;
     private String status;
     private Suggestion suggestion;
@@ -40,12 +41,12 @@ public class HeWeather {
          return daily_forecast;
      }
 
-    public void setHourly_forecast(List<Hourly_forecast> hourly_forecast) {
+    /*public void setHourly_forecast(List<Hourly_forecast> hourly_forecast) {
          this.hourly_forecast = hourly_forecast;
-     }
-     public List<Hourly_forecast> getHourly_forecast() {
+     }*/
+     /*public List<Hourly_forecast> getHourly_forecast() {
          return hourly_forecast;
-     }
+     }*/
 
     public void setNow(Now now) {
          this.now = now;

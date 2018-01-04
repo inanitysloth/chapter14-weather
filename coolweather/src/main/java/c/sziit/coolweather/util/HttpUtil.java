@@ -2,6 +2,8 @@ package c.sziit.coolweather.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,6 +11,7 @@ import org.json.JSONObject;
 import c.sziit.coolweather.db.City;
 import c.sziit.coolweather.db.County;
 import c.sziit.coolweather.db.Province;
+import c.sziit.coolweather.jsonbean.HeWeather;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
@@ -109,4 +112,20 @@ public class HttpUtil {
         }
         return false;
     }
+    /**
+     * 将返回的JSON数据解析成HeWeather实体类
+     */
+    public static HeWeather handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            HeWeather heWeather=new Gson().fromJson(weatherContent, HeWeather.class);
+            return heWeather;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

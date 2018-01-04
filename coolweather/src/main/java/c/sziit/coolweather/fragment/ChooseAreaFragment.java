@@ -1,6 +1,7 @@
 package c.sziit.coolweather.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,7 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import c.sziit.coolweather.MainActivity;
 import c.sziit.coolweather.R;
+import c.sziit.coolweather.WeatherActivity;
 import c.sziit.coolweather.db.City;
 import c.sziit.coolweather.db.County;
 import c.sziit.coolweather.db.Province;
@@ -84,6 +87,17 @@ public class ChooseAreaFragment extends Fragment implements AdapterView.OnItemCl
       * 根据传入的地址和类型从服务器上查询省市县数据。
  */
     private void queryFromServer(String address, final String type) {
+        HttpUtil.sendOkHttpRequest(address, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -203,9 +217,21 @@ public class ChooseAreaFragment extends Fragment implements AdapterView.OnItemCl
         } else if (currentLevel == LEVEL_CITY) {
             selectedCity = cityList.get(i);
             queryCounties();
+        } else if (currentLevel == LEVEL_COUNTY) {
+            String weatherId = countyList.get(i).getWeatherId();
+            if (getActivity() instanceof MainActivity) {
+                Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                intent.putExtra("weather_id", weatherId);
+                startActivity(intent);
+                getActivity().finish();
+            } else if (getActivity() instanceof WeatherActivity) {
+                WeatherActivity activity = (WeatherActivity) getActivity();
+                /*activity.drawerLayout.closeDrawers();
+                activity.swipeRefresh.setRefreshing(true);
+                activity.requestWeather(weatherId);*/
+            }
         }
     }
-
     @Override
     public void onClick(View view) {
         if (currentLevel == LEVEL_COUNTY) {
