@@ -135,6 +135,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         mWeatherInfoText.setText(weather.getNow().getCond().getTxt());
         //forecast.xml
         mForecastLayout.removeAllViews();
+        //未来几天
         for (Daily_forecast forecast:weather.getDaily_forecast())
         {
             View view = LayoutInflater.from(this).inflate(R.layout.forecast_item, mForecastLayout, false);
