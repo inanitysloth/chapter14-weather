@@ -2,8 +2,6 @@
   * Copyright 2018 bejson.com 
   */
 package c.sziit.coolweather.jsonbean;
-import java.util.Date;
-
 /**
  * Auto-generated: 2018-01-02 9:54:59
  *
@@ -12,19 +10,19 @@ import java.util.Date;
  */
 public class Update {
 
-    private Date loc;
-    private Date utc;
-    public void setLoc(Date loc) {
+    private String loc;
+    private String utc;
+    public void setLoc(String loc) {
          this.loc = loc;
      }
-     public Date getLoc() {
+     public String getLoc() {
          return loc;
      }
 
-    public void setUtc(Date utc) {
+    public void setUtc(String utc) {
          this.utc = utc;
      }
-     public Date getUtc() {
+     public String getUtc() {
          return utc;
      }
 
